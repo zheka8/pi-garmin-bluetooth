@@ -1,0 +1,13 @@
+* periodically do an bluetooth LE scan with hcitool lescan to see if the RTL
+  radar is in the list
+
+* start recording if it's in the list and keep recording until it disappears
+  from the list
+
+* assuming the radar maintains an LE connection when Garmin is powered up and
+  drops it when garmin is powered down
+
+* add RTL address to whitelist and only scan whitelist - specify random
+  address
+  hcitool lewadd --random <baddr>
+
