@@ -1,0 +1,6 @@
+sudo apt-get install libglib2.0-dev
+pip3 install pybluez
+
+sudo apt-get install libglib2.0-dev
+sudo pipi3 install bluepy
+sudo blesca
