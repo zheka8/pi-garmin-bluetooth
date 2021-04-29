@@ -20,4 +20,5 @@ sudo systemctl enable ble_scan.service
 sudo systemctl [start|stop] ble_scan.service
 ```
 
+* Log entries appear in /var/log/syslog
 
