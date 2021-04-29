@@ -19,6 +19,9 @@ SEG_DURATION=3600000  # (ms)  new file every hour
 WIDTH=1024
 HEIGHT=768
 
+# Log params
+$LOG_FILE=status.log
+
 update_state () {
     # check if recording is on
     IS_RECORDING=$(pgrep raspivid)
@@ -28,7 +31,7 @@ update_state () {
         IS_RECORDING=-1
     fi
 
-    echo "IS_RECORDING $IS_RECORDING"
+    echo "IS_RECORDING $IS_RECORDING" > status.log
 }
 
 start_video_recording () {
