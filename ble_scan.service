@@ -1,0 +1,14 @@
+[Unit]
+Description=ffmpeg streamer
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /home/pi/Projects/raspberry-pi-video-stream/start_video_stream_ffmpeg.sh
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+RestartSec=10
+User=pi
+
+[Install]
+WantedBy=multi-user.target
