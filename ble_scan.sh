@@ -15,7 +15,7 @@ NUM_MISSES_TO_STOP=8  #number of times the target is not found before stopping r
 IS_RECORDING=-1
 
 # Recording params
-SEG_DURATION=3600000  # (ms)  new file every hour
+SEG_DURATION=$(1*60*60*1000)  # (ms)  new file every hour
 WIDTH=1280
 HEIGHT=720
 
@@ -42,7 +42,7 @@ start_video_recording () {
     echo "Starting video recording"
     FILE_NAME=`date +"%Y_%m_%d_%H_%M"`
     
-    raspivid -o "$DIR_PATH/data/$FILE_NAME.h264" \
+    raspivid -o "$DIR_PATH/data/$FILE_NAME_%d.h264" \
 	     -t 0 -s -sg $SEG_DURATION \
 	     -w $WIDTH -h $HEIGHT &
     
