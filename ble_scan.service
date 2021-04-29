@@ -1,9 +1,9 @@
 [Unit]
-Description=ffmpeg streamer
+Description=ble scan
 After=network.target
 
 [Service]
-ExecStart=/bin/bash /home/pi/Projects/raspberry-pi-video-stream/start_video_stream_ffmpeg.sh
+ExecStart=/bin/bash /home/pi/Projects/pi-garmin-bluetooth/ble_scan.sh
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
