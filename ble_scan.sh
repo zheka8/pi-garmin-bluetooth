@@ -4,7 +4,7 @@
 # enable video recording if the device is found
 
 # Scan params
-SCAN_INTERVAL=2       #time between scans (seconds)
+SCAN_INTERVAL=10      #time between scans (seconds)
 SCAN_DURATION="2"     #duration of each scan (seconds)
 SCAN_QUERY="RTL"      #target device
 NUM_FOUND=0           #number of devices found that match target
@@ -16,11 +16,15 @@ IS_RECORDING=-1
 
 # Recording params
 SEG_DURATION=3600000  # (ms)  new file every hour
-WIDTH=1024
-HEIGHT=768
+WIDTH=1280
+HEIGHT=720
 
 # Log params
-$LOG_FILE=status.log
+LOG_FILE="status.log"
+
+# Path
+full_path=$(realpath $0)
+dir_path=$(dirname $full_path)
 
 update_state () {
     # check if recording is on
@@ -31,14 +35,15 @@ update_state () {
         IS_RECORDING=-1
     fi
 
-    echo "IS_RECORDING $IS_RECORDING" > status.log
+    echo "IS_RECORDING $IS_RECORDING"
 }
 
 start_video_recording () {
     echo "Starting video recording"
     FILE_NAME=`date +"%Y_%m_%d_%H_%M"`
     
-    raspivid -o data/$FILE_NAME.h264 -t 0 -s -sg $SEG_DURATION \
+    raspivid -o "$dir_path/data/$FILE_NAME.h264" \
+	     -t 0 -s -sg $SEG_DURATION \
 	     -w $WIDTH -h $HEIGHT &
     
     update_state
@@ -51,8 +56,8 @@ stop_video_recording () {
 }
 
 scan () {
-    NUM_FOUND=$(sudo timeout -s SIGINT "$SCAN_DURATION"s \
-	        hcitool -i hci0 lescan | grep "$SCAN_QUERY" | wc -l)
+    NUM_FOUND=$(timeout -s SIGINT "$SCAN_DURATION"s \
+    	        hcitool -i hci0 lescan | grep "$SCAN_QUERY" | wc -l)
 
     # keep track consecutive absences of target device
     if [[ $NUM_FOUND -eq 0 ]]
@@ -81,7 +86,10 @@ main_loop () {
         elif [[ $NUM_MISSES -ge $NUM_MISSES_TO_STOP ]] && [[ $IS_RECORDING -ge 0 ]]
         then
 	    stop_video_recording
-        fi
+        else
+	    echo "WHY ARE WE HERE, $NUM_MISSES, $IS_RECORDING"
+	fi
+
 
 	sleep $SCAN_INTERVAL
     done
