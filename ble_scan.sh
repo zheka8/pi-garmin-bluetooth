@@ -16,8 +16,9 @@ IS_RECORDING=-1
 
 # Recording params
 SEG_DURATION=$((1*60*60*1000))  # (ms) new file every hour
-WIDTH=1280
-HEIGHT=720
+WIDTH=720  #1280
+HEIGHT=480 #720
+FPS=24
 
 # Data
 ERR_FILE="errors.txt"
@@ -44,7 +45,7 @@ start_video_recording () {
     
     raspivid -o "$DIR_PATH/data/$FILE_NAME.%d.h264" \
 	     -t 0 -s -sg $SEG_DURATION \
-	     -w $WIDTH -h $HEIGHT &
+	     -w $WIDTH -h $HEIGHT -fps $FPS &
     
     update_state
 }
