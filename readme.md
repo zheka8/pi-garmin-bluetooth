@@ -28,13 +28,9 @@ vlc sftp://user@host:/path/to/file
 
 ## Video Processing
 ### Convert h264 videos to mp4
-* Install h264
+* Using VLC:
 ```
-brew install x264
-```
-* Convert
-```
-x264 raw_stream.264 -o playable_video.mp4
+vlc --no-repeat --no-loop -I dummy file.h264 --sout='#transcode{vcodec=h264,acodec=none,scodec=none,soverlay}:std{access=file{no-overwrite},mux=mp4,dst="file.mp4"}' vlc://quit
 ```
 
 ### Combine processed videos
