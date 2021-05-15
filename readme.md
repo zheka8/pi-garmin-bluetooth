@@ -26,3 +26,23 @@ sudo systemctl [start|stop] ble_scan.service
 
 vlc sftp://user@host:/path/to/file
 
+## Video Processing
+### Convert h264 videos to mp4
+* Install h264
+```
+brew install x264
+```
+* Convert
+```
+x264 raw_stream.264 -o playable_video.mp4
+```
+
+### Combine processed videos
+* Install MP4box
+```
+brew install MP4box
+```
+* Combine
+```
+MP4Box -cat video1.mp4 -cat video2.mp4 -cat video3.mp4 combined.mp4
+```
