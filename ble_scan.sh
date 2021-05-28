@@ -16,8 +16,8 @@ IS_RECORDING=-1
 
 # Recording params
 SEG_DURATION=$((1*60*60*1000))  # (ms) new file every hour
-WIDTH=720  #1280
-HEIGHT=480 #720
+WIDTH=1280
+HEIGHT=720
 FPS=24
 
 # Data
