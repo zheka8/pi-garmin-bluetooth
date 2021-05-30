@@ -29,7 +29,7 @@ vlc sftp://user@host:/path/to/file
 ### Configure Raspberry Pi USB port for faster data transfers
 https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget
 
-### To transfer files from Raspberry Pi over the network (slow)
+### To transfer files from Raspberry Pi over the network
 ```
 rsync -pvah --progress user@host:/path/pi-garmin-bluetooth/data/*.h264 .
 ```
