@@ -26,6 +26,11 @@ sudo systemctl [start|stop] ble_scan.service
 
 vlc sftp://user@host:/path/to/file
 
+### To transfer files from Raspberry Pi over the network
+```
+rsync -pvah --progress user@host:/path/pi-garmin-bluetooth/data/*.h264 .
+```
+
 ## Video Processing
 ### Convert h264 videos to mp4
 * Using VLC:
