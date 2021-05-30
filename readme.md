@@ -26,7 +26,10 @@ sudo systemctl [start|stop] ble_scan.service
 
 vlc sftp://user@host:/path/to/file
 
-### To transfer files from Raspberry Pi over the network
+### Configure Raspberry Pi USB port for faster data transfers
+https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget
+
+### To transfer files from Raspberry Pi over the network (slow)
 ```
 rsync -pvah --progress user@host:/path/pi-garmin-bluetooth/data/*.h264 .
 ```
