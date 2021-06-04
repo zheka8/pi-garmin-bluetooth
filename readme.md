@@ -35,6 +35,7 @@ Editing /etc/network/interfaces seems to disable wlan0 interface dhcp. Instead, 
 interface usb0
 static ip_address=192.168.7.2/24
 static routers=192.168.7.1
+metric 999
 ```
 
 ### To transfer files from Raspberry Pi over the network
