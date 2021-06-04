@@ -29,6 +29,14 @@ vlc sftp://user@host:/path/to/file
 ### Configure Raspberry Pi USB port for faster data transfers
 https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget
 
+Editing /etc/network/interfaces seems to disable wlan0 interface dhcp. Instead, add usb0 to /etc/dhcpcd.conf:
+```
+# usb0 configuration
+interface usb0
+static ip_address=192.168.7.2/24
+static routers=192.168.7.1
+```
+
 ### To transfer files from Raspberry Pi over the network
 ```
 rsync -pvah --progress user@host:/path/pi-garmin-bluetooth/data/*.h264 .
