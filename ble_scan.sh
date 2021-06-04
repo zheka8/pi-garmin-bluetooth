@@ -9,7 +9,7 @@ SCAN_DURATION="2"     #duration of each scan (seconds)
 SCAN_QUERY="RTL23101" #target device
 NUM_FOUND=0           #number of devices found that match target
 NUM_MISSES=0          #number of times target not found
-NUM_MISSES_TO_STOP=8  #number of times the target is not found before stopping rec
+NUM_MISSES_TO_STOP=4  #number of times the target is not found before stopping rec
 
 # Recording state
 IS_RECORDING=-1
